@@ -28,7 +28,8 @@ CLIENT_SECRETS_FILE = "client_secrets.json"
 # These OAuth 2.0 access scopes allow for read-only access to the authenticated
 # user's account for both YouTube Data API resources and YouTube Analytics Data.
 YOUTUBE_SCOPES = ["https://www.googleapis.com/auth/youtube.readonly",
-                  "https://www.googleapis.com/auth/yt-analytics.readonly"]
+                  "https://www.googleapis.com/auth/yt-analytics.readonly",
+                  "https://www.googleapis.com/auth/yt-analytics-monetary.readonly"]
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 YOUTUBE_ANALYTICS_API_SERVICE_NAME = "youtubeAnalytics"
@@ -87,7 +88,8 @@ def run_analytics_report(youtube_analytics, channel_id, options):
     # Call the Analytics API to retrieve a report. For a list of available
     # reports, see:
     # https://developers.google.com/youtube/analytics/v1/channel_reports
-    analytics_query_response = youtube_analytics.reports().query(
+    reports = youtube_analytics.reports()
+    analytics_query_response = reports.query(
         ids="channel==%s" % channel_id,
         metrics=options.metrics,
         dimensions=options.dimensions,
@@ -111,16 +113,17 @@ def run_analytics_report(youtube_analytics, channel_id, options):
 
 if __name__ == "__main__":
     now = datetime.now()
+    today = (now).strftime("%Y-%m-%d")
     one_day_ago = (now - timedelta(days=1)).strftime("%Y-%m-%d")
     one_week_ago = (now - timedelta(days=7)).strftime("%Y-%m-%d")
 
     argparser.add_argument("--metrics", help="Report metrics",
-                           default="views,comments,favoritesAdded,favoritesRemoved,likes,dislikes,shares")
+                           default="views,comments,favoritesAdded,favoritesRemoved,likes,dislikes,shares,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,annotationClickThroughRate,annotationCloseRate,annotationImpressions,annotationClickableImpressions,annotationClosableImpressions,annotationClicks,annotationCloses,subscribersGained,subscribersLost")
     argparser.add_argument("--dimensions", help="Report dimensions",
                            default="video")
     argparser.add_argument("--start-date", default=one_week_ago,
                            help="Start date, in YYYY-MM-DD format")
-    argparser.add_argument("--end-date", default=one_day_ago,
+    argparser.add_argument("--end-date", default=today,
                            help="End date, in YYYY-MM-DD format")
     argparser.add_argument("--max-results", help="Max results", default=10)
     argparser.add_argument("--sort", help="Sort order", default="-views")
