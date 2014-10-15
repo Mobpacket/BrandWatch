@@ -12,6 +12,9 @@ from apiclient.errors import HttpError
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.file import Storage
 from oauth2client.tools import argparser, run_flow
+from flask_bootstrap import Bootstrap
+
+from eve_docs import eve_docs
 
 
 # The CLIENT_SECRETS_FILE variable specifies the name of a file that contains
@@ -136,4 +139,7 @@ if __name__ == '__main__':
     except HttpError, e:
         print "An HTTP error %d occurred:\n%s" % (e.resp.status, e.content)
 
+    #Add eve-docs
+    Bootstrap(app)
+    app.register_blueprint(eve_docs, url_prefix='/docs')
     app.run()
