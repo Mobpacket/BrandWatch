@@ -117,6 +117,7 @@ def get_channel_id(youtube):
 if __name__ == '__main__':
 
     now = datetime.now()
+    today = now.strftime("%Y-%m-%d")
     one_day_ago = (now - timedelta(days=1)).strftime("%Y-%m-%d")
     one_week_ago = (now - timedelta(days=7)).strftime("%Y-%m-%d")
 
@@ -126,7 +127,7 @@ if __name__ == '__main__':
                            default="video")
     argparser.add_argument("--start-date", default=one_week_ago,
                            help="Start date, in YYYY-MM-DD format")
-    argparser.add_argument("--end-date", default=one_day_ago,
+    argparser.add_argument("--end-date", default=today,
                            help="End date, in YYYY-MM-DD format")
     argparser.add_argument("--max-results", help="Max results", default=10)
     argparser.add_argument("--sort", help="Sort order", default="-views")

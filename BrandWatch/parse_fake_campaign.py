@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 from parse_rest.connection import register
 from parse_rest.datatypes import Object
 
@@ -19,32 +20,37 @@ if __name__ == "__main__":
 
     register(app_id=APPLICATION_ID, rest_key=REST_API_KEY, master_key=MASTER_KEY)
 
+    now = datetime.now()
+    one_day_ago = (now - timedelta(days=1))
+    one_week_ago = (now - timedelta(days=7))
+
     campaign = Campaign()
     campaign.name = "Tweedy Campaign"
-    campaign.quartile25Count = 5
-    campaign.quartile50Count = 7
-    campaign.quartile75Count = 23
-    campaign.quartile100Count = 200
+    campaign.user_id = "user232"
+    campaign.start = one_week_ago
+    campaign.end = one_day_ago
     campaign.score = 85
-    campaign.vtr = 85.3
-    campaign.ctr = 0.2
-    campaign.shares = 40
-    campaign.tweets = 20
-    campaign.likes = 10
-    campaign.comments = 5
+    campaign.vtr_target = 90.1
+    campaign.ctr_target = 0.5
+    campaign.shares_target = 400
+    campaign.favorites_target = 100
+    campaign.likes_target = 100
+    campaign.comments_target = 50
+    campaign.video_ids = ['2', '4', '7']
     campaign.save()
 
     campaign = Campaign()
     campaign.name = "Tweedy Campaign Live"
-    campaign.quartile25Count = 0
-    campaign.quartile50Count = 10
-    campaign.quartile75Count = 10
-    campaign.quartile100Count = 300
+    campaign.user_id = "user232"
+    campaign.start = one_week_ago
+    campaign.end = one_day_ago
     campaign.score = 95
-    campaign.vtr = 94.9
-    campaign.ctr = 0.3
-    campaign.shares = 1205
-    campaign.tweets = 200
-    campaign.likes = 1000
-    campaign.comments = 50
+    campaign.vtr_target = 90.1
+    campaign.ctr_target = 0.5
+    campaign.shares_target = 400
+    campaign.favorites_target = 100
+    campaign.likes_target = 100
+    campaign.comments_target = 50
+    campaign.video_ids = ['2', '4', '7']
+
     campaign.save()
