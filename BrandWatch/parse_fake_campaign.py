@@ -21,8 +21,9 @@ if __name__ == "__main__":
     register(app_id=APPLICATION_ID, rest_key=REST_API_KEY, master_key=MASTER_KEY)
 
     now = datetime.now()
-    one_day_ago = (now - timedelta(days=1))
-    one_week_ago = (now - timedelta(days=7))
+    today = now.strftime("%Y-%m-%d")
+    one_day_ago = (now - timedelta(days=1)).strftime("%Y-%m-%d")
+    one_week_ago = (now - timedelta(days=7)).strftime("%Y-%m-%d")
 
     campaign = Campaign()
     campaign.name = "Tweedy Campaign"
@@ -47,6 +48,21 @@ if __name__ == "__main__":
     campaign.score = 95
     campaign.vtr_target = 90.1
     campaign.ctr_target = 0.5
+    campaign.shares_target = 400
+    campaign.favorites_target = 100
+    campaign.likes_target = 100
+    campaign.comments_target = 50
+    campaign.video_ids = ['2', '4', '7']
+    campaign.save()
+
+    campaign = Campaign()
+    campaign.name = "NFL Clips"
+    campaign.user_id = "user232"
+    campaign.start = one_week_ago
+    campaign.end = one_day_ago
+    campaign.score = 98
+    campaign.vtr_target = 95.1
+    campaign.ctr_target = 0.7
     campaign.shares_target = 400
     campaign.favorites_target = 100
     campaign.likes_target = 100
