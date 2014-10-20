@@ -27,9 +27,9 @@ if __name__ == "__main__":
 
     campaign = Campaign()
     campaign.name = "Tweedy Campaign"
-    campaign.user_id = "user232"
-    campaign.start = one_week_ago
-    campaign.end = one_day_ago
+    campaign.user_id = "brandwatch123@gmail.com"
+    campaign.start = "2014-10-12"
+    campaign.end = "2014-10-30"
     campaign.score = 85
     campaign.vtr_target = 90.1
     campaign.ctr_target = 0.5
@@ -37,14 +37,15 @@ if __name__ == "__main__":
     campaign.favorites_target = 100
     campaign.likes_target = 100
     campaign.comments_target = 50
-    campaign.video_ids = ['2', '4', '7']
+    campaign.views_target = 150
+    campaign.video_ids = ["C4ss_bScVTc"]
     campaign.save()
 
     campaign = Campaign()
     campaign.name = "Tweedy Campaign Live"
-    campaign.user_id = "user232"
-    campaign.start = one_week_ago
-    campaign.end = one_day_ago
+    campaign.user_id = "brandwatch123@gmail.com"
+    campaign.start = "2014-10-12"
+    campaign.end = "2014-10-30"
     campaign.score = 95
     campaign.vtr_target = 90.1
     campaign.ctr_target = 0.5
@@ -52,14 +53,15 @@ if __name__ == "__main__":
     campaign.favorites_target = 100
     campaign.likes_target = 100
     campaign.comments_target = 50
-    campaign.video_ids = ['2', '4', '7']
+    campaign.views_target = 150
+    campaign.video_ids = ["-XY9DbQc_9c"]
     campaign.save()
 
     campaign = Campaign()
-    campaign.name = "NFL Clips"
-    campaign.user_id = "user232"
-    campaign.start = one_week_ago
-    campaign.end = one_day_ago
+    campaign.name = "Apple - Will Ferrell"
+    campaign.user_id = "brandwatch123@gmail.com"
+    campaign.start = "2014-10-12"
+    campaign.end = "2014-10-30"
     campaign.score = 98
     campaign.vtr_target = 95.1
     campaign.ctr_target = 0.7
@@ -67,6 +69,7 @@ if __name__ == "__main__":
     campaign.favorites_target = 100
     campaign.likes_target = 100
     campaign.comments_target = 50
-    campaign.video_ids = ['2', '4', '7']
+    campaign.views_target = 150
+    campaign.video_ids = ["4ar6S_D_keM"]
 
     campaign.save()
